@@ -677,8 +677,8 @@
                 fields.push(
                     '<div class="timepicker-field timepicker-' + key.toLowerCase() + '">' +
                         input.outerHTML +
-                        '<button class="picker-step step-up"></button>' +
-                        '<button class="picker-step step-down"></button>' +
+                        '<button type="button" class="picker-step step-up"></button>' +
+                        '<button type="button" class="picker-step step-down"></button>' +
                         '<label>' + this.__["time"][i++] + '</label>' +
                     '</div>'
                 );
