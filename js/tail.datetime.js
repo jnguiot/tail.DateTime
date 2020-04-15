@@ -1171,14 +1171,17 @@
          |  PUBLIC :: FETCH DATE / DTIME
          |  @since  0.4.0 [0.4.0]
          */
-        fetchDate: function(date){
-            date = parse(date || false) || this.view.date;
-            var inp = this.dt.querySelectorAll("input[type=number]");
-            if(inp && inp.length == 3){
-                date.setHours(inp[0].value || 0, inp[1].value || 0, inp[2].value || 0, 0);
-            }
-            return date;
-        },
+         fetchDate: function(date){
+             date = parse(date || false) || this.view.date;
+             var inp = this.dt.querySelectorAll("input[inputmode=numeric]");
+             if(inp && inp.length > 0){
+                 date.setHours( this.con.timeHours === false ? 0 : inp[0].value || 0,
+                                this.con.timeMinutes === false ? 0 : inp[1].value || 0, 
+                                this.con.timeSeconds === false ? 0 : inp[2].value || 0,
+                                0);
+             }
+             return date;
+         },
 
         /*
          |  PUBLIC :: SELECT DATE / TIME

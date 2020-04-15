@@ -1299,9 +1299,12 @@
          */
         fetchDate: function(date){
             date = parse(date || false) || this.view.date;
-            var inp = this.dt.querySelectorAll("input[type=number]");
-            if(inp && inp.length == 3){
-                date.setHours(inp[0].value || 0, inp[1].value || 0, inp[2].value || 0, 0);
+            var inp = this.dt.querySelectorAll("input[inputmode=numeric]");
+            if(inp && inp.length > 0){
+                date.setHours( this.con.timeHours === false ? 0 : inp[0].value || 0,
+                               this.con.timeMinutes === false ? 0 : inp[1].value || 0, 
+                               this.con.timeSeconds === false ? 0 : inp[2].value || 0,
+                               0);
             }
             return date;
         },
